@@ -21,6 +21,7 @@ import io.flutter.plugin.common.MethodChannel
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        result = null;
         val ttOpenApi: TikTokOpenApi = TikTokOpenApiFactory.create(this)
         ttOpenApi.handleIntent(intent, this) // receive and parse callback
     }
