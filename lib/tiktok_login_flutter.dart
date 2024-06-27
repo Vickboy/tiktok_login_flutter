@@ -9,7 +9,7 @@ class TiktokLoginFlutter {
   }
 
   /// Rethreive Auth code
-  static Future<String> authorize(String scope,String tester) async {
+  static Future<String> authorize(String scope,) async {
 
     return  await _channel.invokeMethod('authorize', {"scope":scope});
   }

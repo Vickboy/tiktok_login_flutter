@@ -28,20 +28,20 @@ class TikTokEntryActivity : Activity(), IApiEventHandler {
     }
 
     override fun onResp(resp: BaseResp) {
-        synchronized(this) {
+
             if (resp is Authorization.Response) {
                 result?.success(resp.authCode)
                 result = null
             }
-        }
+
         this.finish()
     }
 
     override fun onErrorIntent(intent: Intent?) {
-        synchronized(this) {
+
             result?.error("AUTHORIZATION_ERROR", "Failed to get auth code", null)
             result = null
-        }
+
         this.finish()
     }
 }
