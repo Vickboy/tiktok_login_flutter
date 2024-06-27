@@ -63,9 +63,9 @@ class TiktokLoginFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
     private fun authorize(call: MethodCall, result: MethodChannel.Result) {
 
       // passing result callback to TikTokEntryActivity for return the response
-      if(TikTokEntryActivity.result == null) {
-        TikTokEntryActivity.result = result
-      }
+//      if(TikTokEntryActivity.result == null) {
+//        TikTokEntryActivity.result = result
+//      }
 
       try {
         val scope:String =  call.argument<String>("scope")!!
