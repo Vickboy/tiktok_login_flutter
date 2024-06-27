@@ -7,8 +7,10 @@ class TiktokLoginFlutter {
   static Future<bool> initializeTiktokLogin(String clientKey) async {
    return await _channel.invokeMethod('initializeTiktokLogin', clientKey);
   }
+
+  /// Rethreive Auth code
   static Future<String> authorize(String scope) async {
-    // latest
+
     return  await _channel.invokeMethod('authorize', {"scope":scope});
   }
 
