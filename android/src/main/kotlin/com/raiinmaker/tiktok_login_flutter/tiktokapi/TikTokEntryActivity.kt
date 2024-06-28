@@ -11,37 +11,37 @@ import com.bytedance.sdk.open.tiktok.common.model.BaseReq
 import com.bytedance.sdk.open.tiktok.common.model.BaseResp
 import io.flutter.plugin.common.MethodChannel
 
-class TikTokEntryActivity : Activity(), IApiEventHandler {
+
+
+ class TikTokEntryActivity : Activity(), IApiEventHandler {
 
     companion object {
-        var result: MethodChannel.Result? = null
+        var result: MethodChannel.Result? = null;
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        result = null;
         val ttOpenApi: TikTokOpenApi = TikTokOpenApiFactory.create(this)
         ttOpenApi.handleIntent(intent, this) // receive and parse callback
     }
 
     override fun onReq(req: BaseReq) {
-        // Handle any request if needed
-    }
 
+    }
     override fun onResp(resp: BaseResp) {
 
-            if (resp is Authorization.Response) {
-                result?.success(resp.authCode)
-                result = null
-            }
+        if (resp is Authorization.Response) {
 
+            result?.success(resp.authCode)
+        }
         this.finish()
     }
 
     override fun onErrorIntent(intent: Intent?) {
-
-            result?.error("AUTHORIZATION_ERROR", "Failed to get auth code", null)
-            result = null
-
+        result?.error("AUTHORIZATION_ERROR", "Failed to get auth code", null);
         this.finish()
     }
+
+
 }
